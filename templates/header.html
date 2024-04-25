@@ -1,0 +1,18 @@
+<header class="tm-site-header">
+    <div class="navbar">
+        <a href="/index" class="navbar-container">
+            <div class="navbar-left">
+                <img src="{{url_for('static', filename='img/waterquality.png')}}" alt="">
+            </div>
+            <div class="navbar-right">
+                <h1 class="tm-title tm-mt-0 tm-mb-0">
+                    <span class="tm-color-primary">Water</span><span class="tm-color-gray-2">Test</span>
+                </h1>
+                <em class="tm-tagline tm-color-light-gray">Water Quality Classification</em>
+            </div>
+        </a>
+        <div class="navbar-left" style="display: flex; justify-content: flex-end; padding: 10px; ">
+            <span class="tm-color-primary">Welcome: {{ name }}.</span> 
+        </div>
+    </div>
+</header>

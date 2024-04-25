@@ -1,0 +1,208 @@
+{% extends 'layout.html' %}
+
+{% block title %}WATER TEST | WATER QUALITY PREDICTION{% endblock %}
+
+{% block content %}
+<div class="tm-container tm-container-predict">
+    <div class="tm-predict">
+        <div class="tm-predict-result">
+            {% if result == 5 %}
+            <p class="tm-predict-title" >Your Water Quality is <span class="result green" style="color: aliceblue;">Very good</span></p>
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">You can drink your water safely and is suitable for agriculture as well.</span></p>
+            <!-- <br><p class="tm-predict-desc"><span class="result green" style="color: aliceblue;">Result = {{ result }}</span>  -->
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Your result is accurate with a 92% confidence level.</span></p>
+
+            
+            <br>
+            <br>
+            <div class="flex-container">
+                <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"><img src="{{url_for('static', filename='img/drinking.png')}}" alt=""></div>
+                    <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"> <img src="{{url_for('static', filename='img/agriculture.png')}}" alt=""></div>
+                    
+                 </div>
+            
+            
+            {% endif %}
+    
+            {% if result == 4 %}
+            <p class="tm-predict-title">Your Water Quality is <span class="result green" style="color: aliceblue;">Good</span></p>
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Recommended to drink water, filteration is preferred. </span></p>
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Your result is accurate with a 92% confidence level.</span></p>
+            
+            <!-- <br><p class="tm-predict-desc"><span class="result green" style="color: aliceblue;">Result = {{ result }}</span>  -->
+
+                <br>
+                <br>   
+                <div class="flex-container">
+                    <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"><img src="{{url_for('static', filename='img/piysuh.png')}}" alt=""></div>
+                        <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"> <img src="{{url_for('static', filename='img/drinking.png')}}" alt=""></div>
+                        
+                     </div>
+
+            {% endif %}
+    
+            {% if result == 3 %}
+            <p class="tm-predict-title">Your water quality is<span class="result orange">Normal</p>
+            <p class="tm-predict-desc"><span class="result orange">You can drink your water, but it is recommended to boil it first.</span></p>
+            <!-- <br><p class="tm-predict-desc"><span class="result orange">Result = {{ result }}</span> </p> -->
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Your result is accurate with a 92% confidence level.</span></p>
+
+            <br>
+            <br>   
+            <div class="flex-container">
+                <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"><img src="{{url_for('static', filename='img/boiling.png')}}" alt=""></div>
+                    <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"> <img src="{{url_for('static', filename='img/purifier.png')}}" alt=""></div>
+                    
+                 </div>
+
+            
+            {% endif %}
+    
+            {% if result == 2 %}
+            <p class="tm-predict-title">Your water quality <span class="result orange" style="color: aliceblue;">Bad</span></p>
+            <p class="tm-predict-desc"><span style="color: orange; font-style: italic;">Your water needs further purification and testing</span></p>
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Your result is accurate with a 92% confidence level.</span></p>
+
+            <!-- <br><p class="tm-predict-desc"><span class="result orange" style="color: aliceblue;">Result = {{ result }}</span>  -->
+                <br>
+            <br>   
+            <div class="flex-container">
+                <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"><img src="{{url_for('static', filename='img/waterpurification.png')}}" alt=""></div>
+                    <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"> <img src="{{url_for('static', filename='img/test.png')}}" alt=""></div>
+                    
+                 </div>
+
+            {% endif %}
+    
+            {% if result == 1 %}
+            <p class="tm-predict-title">Your water quality <span class="result red">Very Bad</span></p>
+            <p class="tm-predict-desc"><span style="color: red ; font-style: italic;">You can't drink your water</span></p>
+            <p class="tm-predict-desc"><span style="color: green ; font-style: italic;">Your result is accurate with a 92% confidence level.</span></p>
+
+            <!-- <br><p class="tm-predict-desc"><span class="result red" style="color: aliceblue;">{{ result }}</span>  -->
+            <br>
+            <br>
+            <div class="flex-container">
+                <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"><img src="{{url_for('static', filename='img/diarrhoea.png')}}" alt=""></div>
+                    <div class="flex-items" style="padding-right: 4rem; width: 700px; height: 300px;"> <img src="{{url_for('static', filename='img/typhoid.png')}}" alt=""></div>
+                    
+                 </div>
+
+            {% endif %}
+
+            {% if result %}
+            <a href="/predict" class="tm-btn btn-blue tm-mt-35">Re-Prediction</a>
+            {% endif%}
+        </div>
+        
+        <h2 style="font-weight: 600; text-align: center; color: #4CAF50; font-family: 'Arial Black', sans-serif; padding-bottom: 15px;">Explore WQI Parameter Descriptions</h2>
+
+        <p style="text-decoration: underline;">Note: To know the quality make sure to read the details of following parameters.<span class="error-red">*</span></p>
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Fecal(20-100)</h3>
+        <p style="text-align: justify;">The Fecal Water Quality Index (WQI) is a measure of water quality based on fecal contamination levels. It combines parameters like fecal coliforms and E. coli into a single index value ranging from 0 to 100. Higher values indicate better water quality, while lower values suggest higher fecal contamination levels. It's used for assessing health risks and guiding water management decisions.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Oxygen(20-100)</h3>
+        <p style="text-align: justify;">The WQI for oxygen measures the overall quality of water based on its oxygen content. It considers factors like dissolved oxygen levels and saturation. A higher WQI value indicates better oxygen levels, crucial for aquatic life. It helps assess water health and guide management decisions.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI pH(20-100)</h3>
+        <p style="text-align: justify;">The WQI for pH assesses water quality based on its acidity or alkalinity levels. It considers pH measurements within a range suitable for aquatic life. A higher WQI value suggests a pH level closer to the optimal range, essential for healthy aquatic ecosystems. This index aids in evaluating water health and guiding management strategies.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Total Sediment(20-100)</h3>
+        <p style="text-align: justify;">The WQI for total sediment measures the overall quality of water based on its sediment content. It considers factors such as sediment concentration and particle size distribution. A higher WQI value indicates lower sediment levels, which is important for maintaining water clarity and ecosystem health. This index helps assess water quality and guide sediment management practices.</p>
+        
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Temperature(20-100)</h3>
+        <p style="text-align: justify;">The WQI for temperature assesses water quality based on its temperature levels. It considers whether the temperature falls within the suitable range for aquatic life and ecosystem health. A higher WQI value indicates temperatures closer to the optimal range, crucial for maintaining biodiversity and ecosystem balance. This index assists in evaluating water health and guiding temperature management strategies.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Nitrogen(20-100)</h3>
+        <p style="text-align: justify;">The WQI for nitrogen measures the overall quality of water based on its nitrogen content, including forms like nitrate and ammonia. It considers concentrations within ranges safe for aquatic life and ecosystem balance. A higher WQI value suggests lower nitrogen levels, vital for preventing nutrient pollution and maintaining water quality. This index aids in assessing water health and guiding nitrogen management practices.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Phosphorus(20-100)</h3>
+        <p style="text-align: justify;">The WQI for phosphorus evaluates water quality based on its phosphorus content, encompassing forms like orthophosphate and total phosphorus. It assesses concentrations within ranges suitable for aquatic ecosystems. A higher WQI value indicates lower phosphorus levels, crucial for preventing eutrophication and maintaining water clarity and biodiversity. This index assists in assessing water health and guiding phosphorus management efforts.</p>
+
+        <br>
+        <h3 style="font-weight: 600; text-decoration: underline;">WQI Turbidity(20-100)</h3>
+        <p style="text-align: justify;">The Water Quality Index (WQI) for turbidity assesses water quality based on its turbidity levels, which indicate the clarity of the water. It considers turbidity measurements within ranges suitable for aquatic habitats. A higher WQI value suggests clearer water, essential for supporting healthy aquatic life and ecosystems. This index helps in evaluating water health and guiding turbidity management practices.</p>
+
+
+        <br>
+        <div class="tm-close">
+            <a href="/index" class="tm-close-popup">
+                <i class="fas fa-times"></i>
+                
+            </a>
+        </div>
+        <h2 style="font-weight: 600; text-decoration: underline; text-align: center; padding-bottom: 10px;">Fill in the data.</h2>
+        <form id="contact-form" action="/result" method="POST">
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="fecal" class="form-control" id="fecal" placeholder="WQI Fecal" onkeypress="return isNumber(event)" required>
+                        <label for="fecal" class="form-label">WQI Fecal(20-100)</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="oxygen" class="form-control" id="oxygen" placeholder="WQI Oxygen" onkeypress="return isNumber(event)" required>
+                        <label for="oxygen" class="form-label">WQI Oxygen(20-100)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="ph" class="form-control" id="ph" placeholder="WQI pH" onkeypress="return isNumber(event)" required>
+                        <label for="ph" class="form-label">WQI pH(20-100)</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="tot_sediment" class="form-control" id="tot_sediment" placeholder="WQI Total Sediment" onkeypress="return isNumber(event)" required>
+                        <label for="tot_sediment" class="form-label">WQI Total Sediment(20-100)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="temp" class="form-control"  id="temp" placeholder="WQI Temperature" onkeypress="return isNumber(event)" required>
+                        <label for="temp" class="form-label">WQI Temperature(20-100)</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="nitrogen" class="form-control" id="nitrogen" placeholder="WQI Nitrogen" onkeypress="return isNumber(event)" required>
+                        <label for="nitrogen" class="form-label">WQI Nitrogen(20-100)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="phosphorus" class="form-control" id="phosphorus" placeholder="WQI Phosphorus" onkeypress="return isNumber(event)" required>
+                        <label for="phosphorus" class="form-label">WQI Phosphorus(20-100)</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input type="nunmber" name="turbidity" class="form-control" id="turbidity" placeholder="WQI Turbidity" onkeypress="return isNumber(event)" required>
+                        <label for="turbidity" class="form-label">WQI Turbidity(20-100)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="reset" class="tm-btn btn-red">Reset</button>
+                <button type="submit" class="tm-btn btn-blue tm-ml-10">Prediction</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

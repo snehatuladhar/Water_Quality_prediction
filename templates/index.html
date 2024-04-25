@@ -1,0 +1,221 @@
+{% extends 'layout.html' %}
+
+{% block title %}Water Quality Classification{% endblock %}
+
+{% block content %}
+<!-- Video Banner -->
+<div id="tm-video-container">
+    <video autoplay muted loop id="tm-video">
+        <source src="{{url_for('static', filename='video/ocean.mp4')}}" type="video/mp4">
+    </video>  
+    <i id="tm-video-control-button" class="fas fa-pause"></i>
+</div>
+
+<!-- Popup Navigation -->
+<div class="tm-container">
+    <nav class="tm-main-nav">
+        <ul id="inline-popups">
+            <!-- Popup Intro -->
+            <li class="tm-nav-item">
+                <a href="#intro" data-effect="mfp-move-from-top" class="tm-nav-link">
+                    Introduction
+                    <i class="fa fa-3x fa-info"></i>
+                </a>
+            </li>
+            <!-- Popup Predict -->
+            <li class="tm-nav-item">
+                <a href="#about" data-effect="mfp-move-from-top" class="tm-nav-link">
+                    Prediction
+                    <i class="fa fa-3x fa-tint"></i>
+                </a>
+            </li>
+            <!-- Popup About us -->
+            <li class="tm-nav-item">
+                <a href="#gallery" data-effect="mfp-move-from-top" class="tm-nav-link" id="tm-gallery-link">
+                    About Us
+                    <i class="fa fa-3x fa-user"></i>
+                </a>
+            </li>
+            <!-- Popup Contact -->
+            <li class="tm-nav-item">
+                <a href="#contact" data-effect="mfp-move-from-top" class="tm-nav-link">
+                    Contact
+                    <i class="fa fa-3x fa-comments"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Intro -->
+    <div id="intro" class="popup mfp-with-anim mfp-hide tm-bg-gray">
+        <div class="tm-close">
+            <a href="#" class="tm-close-popup">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <div class="tm-row tm-intro-row">
+            <img src="{{url_for('static', filename='img/intro.jpg')}}" alt="Intro" class="tm-intro-img">
+            <div class="tm-col tm-bg-white tm-intro-pad">
+                <h2 class="tm-color-primary tm-page-title tm-mb-15">What is Water Test?</h2>
+                <div class="tm-row tm-content-row">
+                    <div class="tm-col-6 tm-intro-col-l">
+                        <p style="text-align: justify;">
+                            Safe and available water is essential for public health, whether it is used for drinking, household purposes, food production or recreational purposes.
+                        </p>
+                        <p style="text-align: justify;">
+                            Water quality index (WQI/<i>Water Quality Index</i>) is an important measuring tool for determining water quality as an index that reflects the combined influence of various water quality parameters that are considered and taken for calculating the water quality index.
+                        </p>
+                    </div>
+                    <div class="tm-col-6 tm-intro-col-r">
+                        <p style="text-align: justify;">
+                            So, we took some inspiration to use <i>dataset</i> water quality index (WQI) to understand the types of safe drinking water by applying
+                            <i>machine learning</i> to distinguish between drinking water and water that is not suitable for drinking.
+                        </p>
+                        <p style="text-align: justify;">
+                            Water test is an application based <i>website</i> to predict the level of water quality which can provide prediction results whether the water is safe for consumption or not suitable for consumption and suggest the probable disease that can be caused by these water type.
+                        </p>
+                        <div class="tm-text-center">
+                            <a href="#" class="tm-btn btn-blue mfp-prevent-close tm-btn-next">
+                                Try Prediction
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <!-- Predict -->
+    <div id="about" class="popup mfp-with-anim mfp-hide tm-bg-gray">
+        <div class="tm-close">
+            <a href="#" class="tm-close-popup">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <h2 class="tm-color-primary tm-about-col tm-mb-20 tm-page-title">What's that <i>Water Quality Index</i>?</h2>
+        <div class="tm-row tm-about-row">
+            <div class="tm-col tm-about-col tm-about-left">
+                <img src="{{url_for('static', filename='img/predict.jpg')}}" alt="Prediction" class="tm-mb-15">
+                <p class="tm-mb-15 tm-text-center tm-color-primary">
+                   <b><i>"Save Water, Save Life"</i></b> 
+                </p>
+                <p class="tm-mb-15" style="text-align: justify;">
+                    <i>Water quality index</i> (WQI) is a simple method used as part of water quality surveys that are influenced by natural processes and human activities.
+                    The Water Quality Index was developed with the concept that a higher index value indicates better water quality. The proposed method for comparing water quality from various water sources is based on eight water quality parameters such as Fecal, pH, Temperaure, Phosphorus, Oxygen, total sediment, Nitrogen and Turbidity.
+                </p>
+            </div>
+            <div class="tm-col tm-about-col">
+                <p class="tm-mb-15 tm-text-center tm-color-primary">
+                    <b>The Importance of Water Quality Monitoring</b>
+                </p>
+                <ol class="tm-mb-15">
+                    <li><b>As a Basic Human Need</b>
+                        <p style="text-align: justify;">Water is one of the most basic needs to support human life. This reflects how important water is in human life. Parameters for measuring water quality, whether physical, chemical or bacteriological, must comply with the standards.</p>
+                    </li>
+                    <li><b>Quality that is safe for consumption</b>
+                        <p style="text-align: justify;">Water quality that is safe for consumption is water quality that meets good physical criteria (temperature, color, sedimentation); Chemical (Oxygen, pH, Salinity, Nutrients); and Biological (Bacteria, Algae, Phytoplankton).</p>
+                    </li>
+                </ol>
+                <p class="tm-mb-15">
+                    Let's ensure your water quality now!
+                </p>
+                <a href="/predict" class="tm-btn btn-blue mfp-prevent-close">
+                    Predict Now!
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <div id="gallery" class="popup mfp-with-anim mfp-hide tm-bg-gray">
+        <div class="tm-close">
+            <a href="#" class="tm-close-popup">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <div class="tm-row tm-gallery-row">
+           
+
+            <!-- navigation and description -->
+            <div class="tm-col tm-gallery-right">
+                <h2 class="tm-color-primary tm-mb-15 tm-page-title" style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 24px;">Development Team</h2>
+                <div class="tm-gallery-right-inner">
+                  <p style="font-family: 'Poppins', sans-serif;">
+                    <ul style="padding: 20px; text-decoration: none; font-size: 20px;">
+                      <li>Sneha Tuladhar</li>
+                      <li>Sital Gurung</li>
+                      <li>Nischal Wagle</li>
+                    </ul>
+                  </p>
+                </div>
+                <a href="#" class="tm-btn btn-blue mfp-prevent-close tm-btn-next" style="font-family: 'Poppins', sans-serif; font-weight: 600;">Contact Us</a>
+              </div>
+              
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="popup mfp-with-anim mfp-hide tm-bg-gray">
+        <div class="tm-close">
+            <a href="#" class="tm-close-popup">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <h2 class="tm-contact-col tm-color-primary tm-page-title tm-mb-20">Contact Us</h2>
+        <div class="tm-row tm-contact-row">
+            <div class="tm-col tm-contact-col">
+                <form id="contact-form" action="" method="POST" class="tm-contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="8" name="message" class="form-control" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="reset" class="tm-btn btn-red">Reset</button>
+                        <button type="submit" class="tm-btn btn-blue tm-ml-10">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div class="tm-col tm-contact-col tm-contact-col-r">
+
+                <!-- Map -->
+                <div class="mapouter tm-mb-30">
+                    <div class="gmap_canvas">
+                        <iframe width="100%" height="520" id="gmap_canvas"
+                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28266.29798227651!2d85.31132098152264!3d27.677515524590895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19eb1dad6439%3A0xbb1689fdcee3740b!2sLabim%20Mall!5e0!3m2!1sen!2snp!4v1700383116933!5m2!1sen!2snp""
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <address class="tm-mb-30">
+                    Ganesh Mandir, Pulchowk<br>
+                    Lalitpur, Nepal 44600
+                </address>
+
+                <!-- Links -->
+                <ul class="tm-contact-links">
+                    <li>
+                        <a href="tel:9808581207">
+                            <i class="fas fa-phone tm-contact-link-icon"></i>
+                            Tel: 9808581207
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:sneha@gmail.com">
+                            <i class="fas fa-at tm-contact-link-icon"></i>
+                            Email: sneha@gmail.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
